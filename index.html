@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download MegaZ Trading Manual</title>
+  <style>
+    :root {
+      --bg-color: #0f172a;
+      --card-bg: #1e293b;
+      --accent: #10b981;
+      --accent-hover: #059669;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      background-color: var(--card-bg);
+      border-radius: 16px;
+      padding: 32px 24px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: rgba(16, 185, 129, 0.1);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .icon-wrapper {
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.05));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      border: 1px solid var(--accent);
+    }
+
+    .icon-wrapper svg {
+      width: 36px;
+      height: 36px;
+      fill: var(--accent);
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    .download-btn {
+      width: 100%;
+      background-color: var(--accent);
+      color: #ffffff;
+      border: none;
+      padding: 16px 20px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .download-btn:active {
+      transform: scale(0.98);
+      background-color: var(--accent-hover);
+    }
+
+    .download-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    .status-msg {
+      margin-top: 16px;
+      font-size: 0.85rem;
+      color: var(--accent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      min-height: 20px;
+    }
+
+    .status-msg.visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <span class="badge">Official PDF Manual v3.7.2</span>
+    
+    <div class="icon-wrapper">
+      <svg viewBox="0 0 24 24">
+        <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+      </svg>
+    </div>
+
+    <h1>MegaZ Trading Manual</h1>
+    <p>Get the complete guide to profitable trading, risk management, and AI signal generation on your device.</p>
+
+    <button class="download-btn" id="downloadBtn">
+      <svg viewBox="0 0 24 24">
+        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+      </svg>
+      Download PDF
+    </button>
+
+    <div class="status-msg" id="statusMsg"></div>
+  </div>
+
+  <script>
+    document.getElementById('downloadBtn').addEventListener('click', function() {
+      const pdfUrl = 'MegaZ Manual1.pdf';
+      const fileName = 'MegaZ Manual1.pdf';
+      const statusMsg = document.getElementById('statusMsg');
+
+      // Create temporary invisible <a> link for standard download trigger
+      const link = document.createElement('a');
+      link.href = pdfUrl;
+      link.download = fileName;
+      link.target = '_blank'; // Supports mobile webview fallback
+
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // Provide visual response to user on mobile
+      statusMsg.textContent = 'Downloading started...';
+      statusMsg.classList.add('visible');
+
+      setTimeout(() => {
+        statusMsg.classList.remove('visible');
+      }, 4000);
+    });
+  </script>
+
+</body>
+</html>
